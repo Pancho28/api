@@ -1,6 +1,7 @@
 import express from 'express';
 import productsData from './data/products.json';
 import { Product } from './types.ts';
+import productsModel from './products.model.ts';
 
 class ProductsController {
 
@@ -10,15 +11,20 @@ class ProductsController {
 
     async getProducts(req: express.Request, res: express.Response) {
         const { search, sort, order, page, limit, available } = req.query;
-        let filteredProducts = [...(productsData as Product[])];
 
-        // Filtrar por disponibilidad (isAvailable)
+        let filteredProducts : Product[] = [];
+
+        try {
+          filteredProducts = await productsModel.getProducts();
+        } catch (error) {
+          return res.status(500).json({ message: "Error retrieving products" });
+        }
+
         if (available !== undefined) {
           const isAvailable = (available === 'true');
           filteredProducts = filteredProducts.filter(product => product.isAvailable === isAvailable);
         }
 
-        // Busqueda por nombre
         if (search) {
           const searchTerm = String(search).toLowerCase();
           filteredProducts = filteredProducts.filter(product =>
@@ -26,7 +32,6 @@ class ProductsController {
           );
         }
     
-        // Ordenamiento
         if (sort) {
           const sortField = String(sort);
           const sortOrder = order === 'desc' ? -1 : 1;
@@ -46,7 +51,6 @@ class ProductsController {
           });
         }
 
-        // Paginacion
         const pageNumber = parseInt(String(page)) || 1;
         const limitNumber = parseInt(String(limit)) || 10;
         const startIndex = (pageNumber - 1) * limitNumber;
@@ -64,11 +68,16 @@ class ProductsController {
 
     async getProductById(req: express.Request, res: express.Response) {
         const { id } = req.params;
-        const product = productsData.find(item => item.id === id);
-        if (product) {
+        try{
+          const product = await productsModel.getProductById(id);
+          if (product) {
             return res.json(product);
+          } else{
+            return res.status(404).json({ message: "Product not found" });
+          }
+        } catch (error) {
+          return res.status(500).json({ message: "Error retrieving product" });
         }
-        return res.status(404).json({ message: "Product not found" });
     }
 
 }
