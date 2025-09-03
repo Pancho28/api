@@ -1,5 +1,4 @@
 import express from 'express';
-import productsData from './data/products.json';
 import { Product } from './types.ts';
 import productsModel from './products.model.ts';
 
