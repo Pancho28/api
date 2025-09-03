@@ -1,8 +1,8 @@
 [
-  { "id": "p1", "name": "Guantes GN102", "price": 59.9, "isAvailable": true, "category": "gloves", "image": "/img/gn102.jpg" },
-  { "id": "p2", "name": "Casco CS433",  "price": 79.9, "isAvailable": false, "category": "headgear", "image": "/img/cs433.jpg" },
-  { "id": "p3", "name": "Bolsa AC990",   "price": 24.5, "isAvailable": true, "category": "bag", "image": "/img/ac990.jpg" },
-  { "id": "p4", "name": "Bolsa AC890",   "price": 26.5, "isAvailable": false, "category": "bag", "image": "/img/ac890.jpg" },
-  { "id": "p5", "name": "Guantes GN103",   "price": 49.5, "isAvailable": true, "category": "gloves", "image": "/img/gn103.jpg" },
-  { "id": "p6", "name": "Guantes GN107",   "price": 4.5, "isAvailable": true, "category": "gloves", "image": "/img/gn107.jpg" }
+  { "id": "p1", "name": "Guantes GN102", "price": 59.9, "isAvailable": true, "category": "gloves", "image": "/img/gn.jpg" },
+  { "id": "p2", "name": "Casco CS433",  "price": 79.9, "isAvailable": false, "category": "headgear", "image": "/img/cs.jpg" },
+  { "id": "p3", "name": "Bolsa AC990",   "price": 24.5, "isAvailable": true, "category": "bag", "image": "/img/ac.jpg" },
+  { "id": "p4", "name": "Bolsa AC890",   "price": 26.5, "isAvailable": false, "category": "bag", "image": "/img/ac.jpg" },
+  { "id": "p5", "name": "Guantes GN103",   "price": 49.5, "isAvailable": true, "category": "gloves", "image": "/img/gn.jpg" },
+  { "id": "p6", "name": "Guantes GN107",   "price": 4.5, "isAvailable": true, "category": "gloves", "image": "/img/gn.jpg" }
 ]
